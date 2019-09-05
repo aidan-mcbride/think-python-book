@@ -16,9 +16,24 @@ def import_book(filename):
         for line in f:
             book_string += line
 
-        # for testing, only return first 100 characters
-        return book_string[:100]
+        # for testing, only return first 200 characters
+        return book_string[:200]
+
+def parse_book(text):
+    """
+    takes an entire book as as single string
+    splits string into words,
+    removes whitespace and punctuation,
+    and converts all words to lowercase.
+    returns a list of words
+    """
+    # remove punctuation
+    no_punc = text.translate(text.maketrans('', '', string.punctuation))
+
+    parsed = no_punc.lower().strip().split()
+    return parsed
+
 
 plato = import_book('pg55201.txt')
 
-print(plato)
+print(parse_book(plato))
