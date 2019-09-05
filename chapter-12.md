@@ -276,3 +276,26 @@ def most_frequent(string):
    ```
 
 3. > In Scrabble, a "bingo" is when you play all seven tiles in your rack, along with a letter on the board, to form an eight-letter word. What collection of 8 letters forms the most possible bingos?
+
+   ```python
+   # exercises/12.2.3.py
+   
+   # ...
+   
+   def print_anagrams(anagrams):
+       # ...
+       for letter_set in anagrams:
+           # ...
+           if len(words) > 1 and len(letter_set) == 8:
+               # ...
+   
+   # ...
+   
+   """
+   ANSWER:
+   	letters = ('a', 'e', 'g', 'i', 'n', 'r', 's', 't')
+   	words = ['angriest', 'astringe', 'ganister', 'gantries', 'granites', 'ingrates', 'rangiest']
+   """
+   ```
+
+   
