@@ -22,3 +22,38 @@ for each word in word list:
         if not: add as key with an empty list as a value
     append the word to the list for that key
 """
+
+# fin = open('exercises/words.txt')
+
+### TESTING ###
+fin = ['cat', 'rat', 'art', 'tack']
+
+def word_to_tuple(word):
+    """
+    takes a word
+    returns a tuple of each letter in that word
+    sorted alphabetically
+    """
+    word = word.strip()
+    # since strings are sequences of letters
+    # `sorted` will automatically convert a string
+    # to a list, then sort it
+    word = tuple(sorted(word))
+    return word
+
+
+def anagrams(word_list):
+    output = dict()
+
+    for word in word_list:
+        letters = word_to_tuple(word)
+        # add letters as key to output dict
+        # if not present already
+        output[letters] = output.get(letters, [])
+        # append word to list at key
+        output[letters].append(word)
+
+    print(output)
+
+#### TEST ####
+anagrams(fin)
