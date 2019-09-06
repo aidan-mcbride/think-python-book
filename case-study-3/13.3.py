@@ -1,41 +1,4 @@
-# 13: Case Study: Data Structure Selection
-
-## `13.1` Word Frequency Analysis
-
-### `Exercise 13.1`
-
-> Write a program that reads a file, breaks each line into words, strips whitespace and punctuation from the words, and converts them to lowercase.
-
-```python
-# case-study-3/13.1.1.py
-
-import string
-
-def parse(text):
-    """
-    takes a string of text
-    splits text into words,
-    removes whitespace and punctuation,
-    and converts them to lowercase.
-    """
-    # remove punctuation
-    no_punc = text.translate(text.maketrans('', '', string.punctuation))
-
-    parsed = no_punc.lower().strip().split()
-    return parsed
-
-```
-
-### `Exercise 13.2`
-
-> Modify your program to read the book you downloaded, skip over the header information at the beginning of the file, and process the rest of the words as before.
->
-> Then modify the program to count the total number of words in the book, and the number of times each word is used.
->
-> print the number of different words used in the book.
-
-```python
-# case-study-3/13.2.py
+# case-study-3/13.3.py
 
 
 import string
@@ -54,8 +17,7 @@ def import_book(filename):
         for line in f:
             book_string += line
 
-        # for testing, only return first 300 words
-        return book_string[:300]
+        return book_string
 
 
 def parse_book(text):
@@ -86,30 +48,6 @@ def word_frequency(word_list):
         hist[word] = hist.get(word, 0) + 1
     return hist
 
-
-#####################
-#### RUN PROGRAM ####
-#####################
-
-plato = import_book("pg55201.txt")
-
-word_list = parse_book(plato)
-word_freq = word_frequency(word_list)
-
-print("total words: {}".format(len(word_list)))
-print(word_freq)
-print("different words: {}".format(len(word_freq)))
-
-```
-
-### `Exercise 13.3`
-
-> Modify the program from the previous exercise to print the 20 most frequently used words in the book.
-
-```python
-# case-study-3/13.3.py
-
-# ...
 
 def top_20(word_freq):
     """
@@ -145,6 +83,3 @@ top_words = top_20(word_freq)
 
 for word in top_words:
     print(word)
-
-```
-
