@@ -204,3 +204,84 @@ for word in not_in:
     print(word)
 ```
 
+---
+
+## `13.2`
+
+**Deterministic** programs will always generate the same output given the same input.
+
+### `Exercise 13.5`
+
+> Write a function named `choose_from_hist` that takes a histogram as defined in Section 11.2 and returns a random value from the histogram, chosen with probability in proportion to frequency.
+
+*After thinking about this for a hot minute, the simplest solution I came up with was to convert the histogram back into the original list and then do `random.choice()` on that list. This seems wrong though since the first step in the example is to convert my list into a histogram, and I'm undoing that.*
+
+```python
+# case-study-3/13.5.py
+
+import random
+
+# from 11.2
+def histogram(s):
+    d = dict()
+    for c in s:
+        if c not in d:
+            d[c] = 1
+        else:
+            d[c] += 1
+    return d
+
+def choose_from_hist(hist):
+    """
+    takes a histogram
+    returns a randomly selected key
+    with probability based on value
+    """
+    p = list()
+    for key, value in hist.items():
+        for i in range(value):
+            p.append(key)
+    return random.choice(p)
+
+t = ['a', 'a', 'b']
+hist = histogram(t)
+
+print(choose_from_hist(hist))
+
+```
+
+### `Exercise 13.6`
+
+> Write a program that uses set subtraction to find words in the book that are not in the word list
+
+*Modified from `13.4`*
+
+```python
+# case-study-3/13.6.py
+
+# ...
+
+def not_in_list(book_words, word_list):
+    # ...
+    return list(set(book_words) - set(word_list))
+
+# ...
+
+```
+
+## `13.7`
+
+* **Linear Search** - Iterate through a given list and, for each item, check if that item is the one we are looking for. Can be used on an unsorted list, but is very inefficient compared to...
+* **Bisection/Binary Search**
+  * Split a *<u>sorted</u>* list in half at some element
+  * check if the element we are looking for would come *before* or *after* the element we selected from the list.
+  * If before, split first half in half again.
+  * If after, split the last half in half again.
+  * Continue bisecting sections until we find the element we are looking for.
+
+Bisection search can be implemented in python using the [`bisect` module](https://docs.python.org/3.7/library/bisect.html)
+
+### `Exercise 13.7`
+
+> Write a program that uses the bisection search algorithm to choose a random word from the book based on frequency.
+
