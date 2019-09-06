@@ -148,3 +148,59 @@ for word in top_words:
 
 ```
 
+### `Exercise 13.4`
+
+> Modify the program to read a word list and then print all the words in the book that are not in the word list.
+
+```python
+# case-study-3/13.3.py
+
+# ...
+
+def import_word_list(filename):
+    """
+    takes a word list file's filename
+    opens that file
+    returns a list of the contents of the file
+    """
+    with open("case-study-3/{}".format(filename), "r") as f:
+        wl = list()
+        for line in f:
+            wl.append(line.strip())
+        return wl
+
+#...
+
+def not_in_list(book_words, word_list):
+    """
+    WARNING: TAKES FOREVER TO COMPLETE
+    ---
+    takes a list of all words in a book and a list of all known words
+    returns a list of book words that are not in the list of all known words
+    """
+    not_in = list()
+
+    for word in book_words:
+        if word not in word_list:
+            not_in.append(word)
+
+    return not_in
+
+
+#####################
+#### RUN PROGRAM ####
+#####################
+
+plato = import_book("pg55201.txt")
+word_list = import_word_list("words.txt")
+
+book_words = parse_book(plato)
+word_freq = word_frequency(book_words)
+top_words = top_20(word_freq)
+
+not_in = not_in_list(book_words, word_list)
+
+for word in not_in:
+    print(word)
+```
+
