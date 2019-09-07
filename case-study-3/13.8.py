@@ -1,6 +1,6 @@
 # case-study-3/13.8.py
 
-import string
+import random, string
 
 def import_book(filename, start_line):
     """
@@ -34,7 +34,7 @@ def parse_book(text):
     # FOR TESTING: return truncated list
     return parsed
 
-def create_markov(word_list, prefix_length=2):
+def create_markov_map(word_list, prefix_length=2):
     """
     takes a list of words and a length for prefixes
     creates a dictionary where the keys are prefixes as tuples
@@ -54,6 +54,24 @@ def create_markov(word_list, prefix_length=2):
     return markov_map
 
 
+def create_markov_chain(map, length=100):
+    """
+    takes a markov mapping, and a length
+    returns a string of words of the given length
+    that is generated from the markov map
+    """
+    markov_chain = str()
+    # start with a random prefix
+    seed = random.choice(list(markov_map.keys()))
+
+    for i in range(length):
+        suffixes = markov_map.get(seed, None)
+        word = random.choice(suffixes)
+        markov_chain += word + " "
+        seed = seed[1:] + (word,)
+
+    return markov_chain
+
 
 #####################
 #### RUN PROGRAM ####
@@ -62,4 +80,6 @@ def create_markov(word_list, prefix_length=2):
 emma = import_book("emma.txt", 248)
 book_words = parse_book(emma)
 
-markov = create_markov(book_words)
+markov_map = create_markov_map(book_words, 4)
+
+print(create_markov_chain(markov_map))
