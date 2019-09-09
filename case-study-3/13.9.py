@@ -16,6 +16,7 @@ OUTLINE:
 """
 
 import math, string
+import matplotlib.pyplot as plt
 
 
 def import_text(filename, start_line=0):
@@ -102,6 +103,20 @@ def zipf_table(sorted_hist):
 
     return zipf
 
+def create_plot(zipf_table):
+    """
+    takes a list of tuples containing word, rank, and frequency
+    generates a plot where logf is the x axis and logr is the y axis
+    """
+    x_data = list()
+    y_data = list()
+    for (word, logr, logf) in zipf_table:
+        x_data.append(logr)
+        y_data.append(logf)
+
+    plt.plot(x_data, y_data)
+    plt.show()
+
 
 #####################
 #### RUN PROGRAM ####
@@ -112,5 +127,4 @@ hist = create_hist(word_list)
 sorted = sort_hist(hist)
 zipf = zipf_table(sorted)
 
-for word in zipf:
-    print(word)
+create_plot(zipf)
