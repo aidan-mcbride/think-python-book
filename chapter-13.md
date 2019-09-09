@@ -475,3 +475,24 @@ print(create_markov_chain(markov_map))
 
 ```
 
+## `13.9` Data Structures
+
+Choosing data structures:
+
+* Supports intended operations 
+* Ease of implementation
+* Run time
+* Memory usage
+
+### `Exercise 13.9`
+
+> Zipf's law
+>
+> **f = cr<sup>-s</sup>**
+>
+> ***log*f = *log*c - s*log*r**
+
+> Write a program that reads a text from a file, counts word frequencies, and prints one line for each word, in descending order of frequency, with log f and log r.
+>
+> Use the graphing program of your choice to plot the results and check whether they form a straight line. Can you estimate the value of `s`?
+
