@@ -1,9 +1,6 @@
 import turtle
 import math
 
-# create turtle
-my_turtle = turtle.Turtle()
-
 def polyline(t, n, length, angle):
     for i in range(n):
         t.fd(length)
@@ -41,20 +38,24 @@ def arc(t, r, angle):
     step_angle = float(angle) / n
     polyline(t=t, n=n, length=step_length, angle=step_angle)
 
-square(my_turtle, 50)
-square(my_turtle, -200)
-square(my_turtle, 63.75)
-square(my_turtle, -50)
+if __name__ == "__main__":
+    # create turtle
+    my_turtle = turtle.Turtle()
 
-polygon(my_turtle, 50, 5)
-polygon(my_turtle, -200, 3)
-polygon(my_turtle, 63.75, 6)
-polygon(my_turtle, -50, 8)
+    square(my_turtle, 50)
+    square(my_turtle, -200)
+    square(my_turtle, 63.75)
+    square(my_turtle, -50)
 
-circle(my_turtle, 200)
-circle(my_turtle, -100)
+    polygon(my_turtle, 50, 5)
+    polygon(my_turtle, -200, 3)
+    polygon(my_turtle, 63.75, 6)
+    polygon(my_turtle, -50, 8)
 
-arc(my_turtle, 30, 90)
-arc(my_turtle, -40, 180)
-arc(my_turtle, 50, -270)
-arc(my_turtle, -60, -360)
+    circle(my_turtle, 200)
+    circle(my_turtle, -100)
+
+    arc(my_turtle, 30, 90)
+    arc(my_turtle, -40, 180)
+    arc(my_turtle, 50, -270)
+    arc(my_turtle, -60, -360)
