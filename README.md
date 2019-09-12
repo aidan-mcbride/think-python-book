@@ -1,4 +1,4 @@
-[# Think Python 2nd Edition](https://greenteapress.com/wp/think-python-2e/)
+# [Think Python 2nd Edition](https://greenteapress.com/wp/think-python-2e/)
 
 These are the notes I took while reading this book, as well as my solutions to any exercises I decided to do.
 
